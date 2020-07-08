@@ -1,0 +1,54 @@
+﻿@model CMS.Models.ViewModel.CMSViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var title = "Add New Conference";
+
+    if(Model.Conference.Id != 0)
+    {
+        ViewData["Title"] = "Update Conference";
+    }
+    else
+    {
+        ViewData["Title"] = "Add New Conference";
+    }
+}
+
+<div class="container">
+    <div class="col-6 m-0 m-auto border">
+        <form method="post" asp-action="AddConference" class="col-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if(Model.Conference.Id != 0)
+            {
+                <input type="hidden" asp-for="@Model.Conference.Id" />
+                title = "Update Conference";
+            }
+
+            <div class="row justify-content-center">
+                <h3>@title</h3>
+            </div>
+            <hr class="w-75" />
+
+            <div class="row form-group">
+                <label asp-for="@Model.Conference.Name"></label>
+                <input asp-for="@Model.Conference.Name" class="form-control" />
+                <span asp-validation-for="@Model.Conference.Name" class="text-danger"></span>
+            </div>
+
+            <div class="row form-group pb-3">
+
+                @if(Model.Conference.Id != 0)
+                {
+                    <partial name="_EditAndBackBtn" model="@Model.Conference.Id" />
+                }
+                else
+                {
+                    <partial name="_CreateAndBackBtn" />
+                }
+
+            </div>
+
+        </form>
+    </div>
+</div>

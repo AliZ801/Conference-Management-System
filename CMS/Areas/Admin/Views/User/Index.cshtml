@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Users List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="border">
+    <div class="row p-1">
+        <div class="col-6">
+            <h3>User's List</h3>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary text-white">
+                <i class="fas fa-plus" style="color:white"></i> &nbsp; New Employee
+            </a>
+        </div>
+    </div>
+    <br />
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(i => i.FName)</th>
+                <th>@Html.DisplayNameFor(i => i.LName)</th>
+                <th>@Html.DisplayNameFor(i => i.Email)</th>
+                <th>@Html.DisplayNameFor(i => i.PhoneNumber)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.Count() > 0)
+            {
+                @foreach(var user in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(i => user.FName)</td>
+                        <td>@Html.DisplayFor(i => user.LName)</td>
+                        <td>@Html.DisplayFor(i => user.Email)</td>
+                        <td>@Html.DisplayFor(i => user.PhoneNumber)</td>
+                        <td class="text-center">
+                            @if (user.LockoutEnd == null || user.LockoutEnd < DateTime.Now)
+                            {
+                                <a asp-action="Lock" asp-route-id="@user.Id" class="btn btn-success" style="width:50px">
+                                    <i class="fas fa-lock-open" style="color:white"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-action="UnLock" asp-route-id="@user.Id" class="btn btn-danger" style="width:50px">
+                                    <i class="fas fa-lock" style="color:white"></i>
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
