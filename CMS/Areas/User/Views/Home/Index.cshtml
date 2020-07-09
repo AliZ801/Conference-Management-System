@@ -2,7 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container border rounded">
+    <div class="row justify-content-between pt-3">
+        <div class="col-12">
+            <h3 class="text-center">Conference Management System</h3>
+            <p>
+                Conference Management System is an ASP.Net Core MVC based application. It is implemented on N-Tier Architecture with Repository Pattern.
+                API calls are made through AJAX and JSON. As for designing Bootstrap 4 is used along with HTML5, CSS3 and third party tools like
+                DataTables to display all records and Sweet Alerts for confirmation alerts.
+            </p>
+            <p>
+                This application have 3 types of users.
+            </p>
+            <ul>
+                <li>Admin have all rights to all the features the appliation provides.</li>
+                <li>Manager can have access to CRUD functionality availbale by the application.</li>
+                <li>Employees only have access to list of records.</li>
+            </ul>
+            <p class="text-danger">Please login to use the application.</p>
+        </div>
+    </div>
 </div>
