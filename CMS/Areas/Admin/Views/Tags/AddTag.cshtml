@@ -1,0 +1,54 @@
+﻿@model CMS.Models.ViewModel.CMSViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var title = "Add New Tag";
+
+    if(Model.Tags.Id != 0)
+    {
+        ViewData["Title"] = "Update Tag";
+    }
+    else
+    {
+        ViewData["Title"] = "Add New Tag";
+    }
+}
+
+<div class="container">
+    <div class="col-6 m-0 m-auto border rounded">
+        <form method="post" asp-action="AddTag" class="col-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if(Model.Tags.Id != 0)
+            {
+                <input type="hidden" asp-for="@Model.Tags.Id" />
+                title = "Update Tag";
+            }
+
+            <div class="row justify-content-center">
+                <h3>@title</h3>
+            </div>
+            <hr class="w-75" />
+
+
+            <div class="row form-group">
+                <label asp-for="@Model.Tags.Name"></label>
+                <input asp-for="@Model.Tags.Name" class="form-control" />
+                <span asp-validation-for="@Model.Tags.Name" class="text-danger"></span>
+            </div>
+
+            <div class="row form-group">
+
+                @if(Model.Tags.Id != 0)
+                {
+                    <partial name="_EditAndBackBtn" model="@Model.Tags.Id" />
+                }
+                else
+                {
+                    <partial name="_CreateAndBackBtn" />
+                }
+
+            </div>
+        </form>
+    </div>
+</div>

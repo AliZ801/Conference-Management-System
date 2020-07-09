@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200709133145_AddSessionsToDb.cs" />
     <Compile Remove="Migrations\20200709133145_AddSessionsToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200709153445_AddSSpeakerToDb.cs" />
+    <Compile Remove="Migrations\20200709153445_AddSSpeakerToDb.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

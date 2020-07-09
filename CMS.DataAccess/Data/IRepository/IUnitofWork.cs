@@ -20,6 +20,14 @@ namespace CMS.DataAccess.Data.IRepository
 
         ISessionsRepo Sessions { get; }
 
+        ITagsRepo Tags { get; }
+
+        ISSpeakerRepo SSpeaker { get; }
+
+        ISTagRepo STag { get; }
+
+        ISAttendeeRepo SAttendee { get; }
+
         void Save();
     }
 }

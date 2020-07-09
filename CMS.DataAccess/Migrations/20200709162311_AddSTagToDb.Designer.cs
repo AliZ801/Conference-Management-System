@@ -4,14 +4,16 @@ using CMS.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200709162311_AddSTagToDb")]
+    partial class AddSTagToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,28 +77,6 @@ namespace CMS.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Conference");
-                });
-
-            modelBuilder.Entity("CMS.Models.SAttendee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AttendeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SessionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AttendeeId");
-
-                    b.HasIndex("SessionId");
-
-                    b.ToTable("SessionAttendees");
                 });
 
             modelBuilder.Entity("CMS.Models.SSpeaker", b =>
@@ -471,19 +451,6 @@ namespace CMS.DataAccess.Migrations
                     b.HasOne("CMS.Models.Conference", "Conference")
                         .WithMany()
                         .HasForeignKey("ConferenceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CMS.Models.SAttendee", b =>
-                {
-                    b.HasOne("CMS.Models.Attendees", "Attendees")
-                        .WithMany()
-                        .HasForeignKey("AttendeeId");
-
-                    b.HasOne("CMS.Models.Sessions", "Sessions")
-                        .WithMany()
-                        .HasForeignKey("SessionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

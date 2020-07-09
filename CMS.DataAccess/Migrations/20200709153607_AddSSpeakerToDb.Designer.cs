@@ -4,14 +4,16 @@ using CMS.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200709153607_AddSSpeakerToDb")]
+    partial class AddSSpeakerToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,28 +79,6 @@ namespace CMS.DataAccess.Migrations
                     b.ToTable("Conference");
                 });
 
-            modelBuilder.Entity("CMS.Models.SAttendee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("AttendeeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SessionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AttendeeId");
-
-                    b.HasIndex("SessionId");
-
-                    b.ToTable("SessionAttendees");
-                });
-
             modelBuilder.Entity("CMS.Models.SSpeaker", b =>
                 {
                     b.Property<int>("Id")
@@ -119,28 +99,6 @@ namespace CMS.DataAccess.Migrations
                     b.HasIndex("SpeakerId");
 
                     b.ToTable("SessionSpeaker");
-                });
-
-            modelBuilder.Entity("CMS.Models.STag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("SessionId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TagId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SessionId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("SessionTag");
                 });
 
             modelBuilder.Entity("CMS.Models.Sessions", b =>
@@ -475,19 +433,6 @@ namespace CMS.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CMS.Models.SAttendee", b =>
-                {
-                    b.HasOne("CMS.Models.Attendees", "Attendees")
-                        .WithMany()
-                        .HasForeignKey("AttendeeId");
-
-                    b.HasOne("CMS.Models.Sessions", "Sessions")
-                        .WithMany()
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("CMS.Models.SSpeaker", b =>
                 {
                     b.HasOne("CMS.Models.Sessions", "Sessions")
@@ -499,19 +444,6 @@ namespace CMS.DataAccess.Migrations
                     b.HasOne("CMS.Models.Speakers", "Speakers")
                         .WithMany()
                         .HasForeignKey("SpeakerId");
-                });
-
-            modelBuilder.Entity("CMS.Models.STag", b =>
-                {
-                    b.HasOne("CMS.Models.Sessions", "Sessions")
-                        .WithMany()
-                        .HasForeignKey("SessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CMS.Models.Tags", "Tags")
-                        .WithMany()
-                        .HasForeignKey("TagId");
                 });
 
             modelBuilder.Entity("CMS.Models.Sessions", b =>

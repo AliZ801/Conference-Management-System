@@ -1,6 +1,6 @@
 ﻿@model CMS.Models.ViewModel.EmployeeViewModel
 @{
-    ViewData["Title"] = "Conference Attendees List";
+    ViewData["Title"] = "Attendees List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,15 +13,15 @@
         <thead>
             <tr>
                 <th>Sr No.</th>
-                <th>Conference Name</th>
-                <th>Attendee Full Name</th>
+                <th>Attendee Name</th>
+                <th>Attendee Email</th>
             </tr>
         </thead>
     </table>
 </div>
 
-@section Scripts{ 
-<script>
+@section Scripts{
+    <script>
     jQuery.noConflict()(function ($) {
         $(document).ready(function () {
             loadDataTable();
@@ -33,14 +33,14 @@
     function loadDataTable() {
         dataTable = $('#tblData').DataTable({
             "ajax": {
-                "url": "/User/ConfAttendee/GetAllCA",
+                "url": "/User/ConfAttendee/GetAllA",
                 "type": "GET",
                 "datatype": "json"
             },
             "columns": [
                 { "data": "id", "width": "15%" },
-                { "data": "conference.name", "width": "45%" },
-                { "data": "attendees.fName", "width": "40%" }
+                { "data": "fName", "width": "45%" },
+                { "data": "email", "width": "40%" }
             ],
             "language": {
                 "emptyTable": "No Record Found!"
@@ -48,5 +48,5 @@
             "width": "100%"
         })
     }
-</script>
+    </script>
 }

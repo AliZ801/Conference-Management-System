@@ -19,6 +19,10 @@ namespace CMS.DataAccess.Data.Repository
             User = new UserRepo(_db);
             Speakers = new SpeakersRepo(_db);
             Sessions = new SessionsRepo(_db);
+            Tags = new TagsRepo(_db);
+            SSpeaker = new SSpeakerRepo(_db);
+            STag = new STagRepo(_db);
+            SAttendee = new SAttendeeRepo(_db);
         }
 
         public IConferenceRepo Conference { get; private set; }
@@ -34,6 +38,14 @@ namespace CMS.DataAccess.Data.Repository
         public ISpeakersRepo Speakers { get; private set; }
 
         public ISessionsRepo Sessions { get; private set; }
+
+        public ITagsRepo Tags { get; private set; }
+
+        public ISSpeakerRepo SSpeaker { get; private set; }
+
+        public ISTagRepo STag { get; private set; }
+
+        public ISAttendeeRepo SAttendee { get; private set; }
 
         public void Dispose()
         {

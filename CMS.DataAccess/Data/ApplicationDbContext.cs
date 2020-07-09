@@ -29,5 +29,11 @@ namespace CMS.DataAccess.Data
         public DbSet<Sessions> Sessions { get; set; }
 
         public DbSet<Tags> Tags { get; set; }
+
+        public DbSet<SSpeaker> SessionSpeaker { get; set; }
+
+        public DbSet<STag> SessionTag { get; set; }
+
+        public DbSet<SAttendee> SessionAttendees { get; set; }
     }
 }

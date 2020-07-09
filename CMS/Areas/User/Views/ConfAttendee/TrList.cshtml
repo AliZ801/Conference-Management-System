@@ -1,27 +1,27 @@
 ﻿@model CMS.Models.ViewModel.EmployeeViewModel
 @{
-    ViewData["Title"] = "Conference Attendees List";
+    ViewData["Title"] = "Tracks List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
     <div class="row pt-2 justify-content-center">
-        <h3>Attendees List</h3>
+        <h3>Tracks List</h3>
     </div>
     <br />
     <table id="tblData" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Sr No.</th>
+                <th>Track Name</th>
                 <th>Conference Name</th>
-                <th>Attendee Full Name</th>
             </tr>
         </thead>
     </table>
 </div>
 
-@section Scripts{ 
-<script>
+@section Scripts{
+    <script>
     jQuery.noConflict()(function ($) {
         $(document).ready(function () {
             loadDataTable();
@@ -33,14 +33,14 @@
     function loadDataTable() {
         dataTable = $('#tblData').DataTable({
             "ajax": {
-                "url": "/User/ConfAttendee/GetAllCA",
+                "url": "/User/ConfAttendee/GetAllTr",
                 "type": "GET",
                 "datatype": "json"
             },
             "columns": [
                 { "data": "id", "width": "15%" },
-                { "data": "conference.name", "width": "45%" },
-                { "data": "attendees.fName", "width": "40%" }
+                { "data": "name", "width": "40%"},
+                { "data": "conference.name", "width": "45%" }
             ],
             "language": {
                 "emptyTable": "No Record Found!"
@@ -48,5 +48,5 @@
             "width": "100%"
         })
     }
-</script>
+    </script>
 }
