@@ -1,0 +1,80 @@
+﻿@model CMS.Models.Sessions
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header bg-dark">
+        <div class="row">
+            <h3 class="text-white pl-2">Session Title: @Model.Title</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <h5>Session Details</h5>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Session ID</label>
+            </div>
+            <div class="col-9">
+                <p>@Model.Id</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Session Title</label>
+            </div>
+            <div class="col-9">
+                <p>@Model.Title</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Session Start Time</label>
+                <br />
+                <span class="text-muted">(MM-DD-YYYY 00:00 AM)</span>
+            </div>
+            <div class="col-9">
+                <p>@Model.STime</p>
+            </div>
+        </div>
+        <div class="row pt-1">
+            <div class="col-3">
+                <label>Session End Time</label>
+                <br />
+                <span class="text-muted">(MM-DD-YYYY 00:00 AM)</span>
+            </div>
+            <div class="col-9">
+                <p>@Model.ETime</p>
+            </div>
+        </div>
+        <div class="row pt-1">
+            <div class="col-3">
+                <label>Session Track Name</label>
+            </div>
+            <div class="col-9">
+                <p>@Model.Tracks.Name</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label>Conference Name</label>
+            </div>
+            <div class="col-9">
+                <p>@Model.Conference.Name</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer bg-dark">
+        <div class="row pb-2">
+            <div class="col-2">
+                <a asp-action="AddSession" asp-route-id="@Model.Id" class="btn btn-outline-primary text-white form-control">Update</a>
+            </div>
+            <div class="col-2">
+                <a asp-action="Index" class="btn btn-outline-primary text-white form-control">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

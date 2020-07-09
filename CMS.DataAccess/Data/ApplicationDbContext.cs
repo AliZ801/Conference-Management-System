@@ -27,5 +27,7 @@ namespace CMS.DataAccess.Data
         public DbSet<Speakers> Speakers { get; set; }
 
         public DbSet<Sessions> Sessions { get; set; }
+
+        public DbSet<Tags> Tags { get; set; }
     }
 }

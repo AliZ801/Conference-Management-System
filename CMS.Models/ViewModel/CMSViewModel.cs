@@ -17,6 +17,8 @@ namespace CMS.Models.ViewModel
 
         public Speakers Speakers { get; set; }
 
+        public Sessions Sessions { get; set; }
+
         //DropDownLists
         public IEnumerable<SelectListItem> ConferenceList { get; set; }
 
@@ -25,5 +27,7 @@ namespace CMS.Models.ViewModel
         public IEnumerable<SelectListItem> AttendeesList { get; set; }
 
         public IEnumerable<SelectListItem> SpeakersList { get; set; }
+
+        public IEnumerable<SelectListItem> SessionsList { get; set; }
     }
 }

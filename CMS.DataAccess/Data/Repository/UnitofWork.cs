@@ -18,6 +18,7 @@ namespace CMS.DataAccess.Data.Repository
             ConfAttendee = new ConfAttendeeRepo(_db);
             User = new UserRepo(_db);
             Speakers = new SpeakersRepo(_db);
+            Sessions = new SessionsRepo(_db);
         }
 
         public IConferenceRepo Conference { get; private set; }
@@ -31,6 +32,8 @@ namespace CMS.DataAccess.Data.Repository
         public IUserRepo User { get; private set; }
 
         public ISpeakersRepo Speakers { get; private set; }
+
+        public ISessionsRepo Sessions { get; private set; }
 
         public void Dispose()
         {

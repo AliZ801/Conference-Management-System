@@ -18,6 +18,8 @@ namespace CMS.DataAccess.Data.IRepository
 
         ISpeakersRepo Speakers { get; }
 
+        ISessionsRepo Sessions { get; }
+
         void Save();
     }
 }

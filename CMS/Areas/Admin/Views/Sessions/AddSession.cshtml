@@ -1,0 +1,76 @@
+﻿@model CMS.Models.ViewModel.CMSViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var title = "Add New Session";
+
+    if(Model.Sessions.Id != 0)
+    {
+        ViewData["Title"] = "Update Session";
+    }
+    else
+    {
+        ViewData["Title"] = "Add New Session";
+    }
+}
+
+<div class="container">
+    <div class="col-6 m-0 m-auto border rounded">
+        <form method="post" asp-action="AddSession" class="col-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (Model.Sessions.Id != 0)
+            {
+                <input type="hidden" asp-for="@Model.Sessions.Id" />
+                title = "Update Session";
+            }
+
+            <div class="row justify-content-center">
+                <h3>@title</h3>
+            </div>
+            <hr class="w-75" />
+
+            <div class="row form-group">
+                <label asp-for="@Model.Sessions.Title"></label>
+                <input asp-for="@Model.Sessions.Title" class="form-control" />
+                <span asp-validation-for="@Model.Sessions.Title" class="text-danger"></span>
+            </div>
+
+            <div class="row form-group">
+                <label>Start Time <span class="text-muted">(MM-DD-YYYY 00:00 AM)</span></label>
+                <input asp-for="@Model.Sessions.STime" class="form-control" />
+                <span asp-validation-for="@Model.Sessions.Title" class="text-danger"></span>
+            </div>
+
+            <div class="row form-group">
+                <label>End Time <span class="text-muted">(MM-DD-YYYY 00:00 AM)</span></label>
+                <input asp-for="@Model.Sessions.ETime" class="form-control" />
+                <span asp-validation-for="@Model.Sessions.ETime" class="text-danger"></span>
+            </div>
+
+            <div class="row form-group">
+                <label>Track Name</label>
+                @Html.DropDownListFor(i => i.Sessions.TrackId, Model.TracksList, "Select Track Name", new { @class = "form-control" })
+            </div>
+
+            <div class="row form-group">
+                <label>Track Name</label>
+                @Html.DropDownListFor(i => i.Sessions.ConferenceId, Model.ConferenceList, "Select Conference Name", new { @class = "form-control" })
+            </div>
+
+            <div class="row form-group">
+
+                @if(Model.Sessions.Id != 0)
+                {
+                    <partial name="_EditAndBackBtn" model="@Model.Sessions.Id" />
+                }
+                else
+                {
+                    <partial name="_CreateAndBackBtn" />
+                }
+
+            </div>
+
+        </form>
+    </div>
+</div>
