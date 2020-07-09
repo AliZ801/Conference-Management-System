@@ -5,11 +5,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using CMS.DataAccess.Data.IRepository;
 using CMS.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CMS.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Admin)]
     public class User : Controller
     {
         private readonly IUnitofWork _unitofWork;

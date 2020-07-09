@@ -6,19 +6,20 @@ using CMS.DataAccess.Data.IRepository;
 using CMS.Models.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 
 namespace CMS.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize]
-    public class Attendees : Controller
+    public class Speakers : Controller
     {
         private readonly IUnitofWork _unitofWork;
 
         [BindProperty]
         public CMSViewModel CMSVM { get; set; }
 
-        public Attendees(IUnitofWork unitofWork)
+        public Speakers(IUnitofWork unitofWork)
         {
             _unitofWork = unitofWork;
         }
@@ -28,13 +29,17 @@ namespace CMS.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult AddAttendee(int? id)
+        public IActionResult AddSpeaker(int? id)
         {
-            CMSVM = new CMSViewModel() { Attendees = new Models.Attendees() };
+            CMSVM = new CMSViewModel()
+            {
+                Speakers = new Models.Speakers(),
+                ConferenceList = _unitofWork.Conference.GetDropDownListForConference()
+            };
 
             if(id != null)
             {
-                CMSVM.Attendees = _unitofWork.Attendees.Get(id.GetValueOrDefault());
+                CMSVM.Speakers = _unitofWork.Speakers.Get(id.GetValueOrDefault());
             }
 
             return View(CMSVM);
@@ -42,17 +47,17 @@ namespace CMS.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddAttendee()
+        public IActionResult AddSpeaker()
         {
             if (ModelState.IsValid)
             {
-                if(CMSVM.Attendees.Id == 0)
+                if (CMSVM.Speakers.Id == 0)
                 {
-                    _unitofWork.Attendees.Add(CMSVM.Attendees);
+                    _unitofWork.Speakers.Add(CMSVM.Speakers);
                 }
                 else
                 {
-                    _unitofWork.Attendees.Update(CMSVM.Attendees);
+                    _unitofWork.Speakers.Update(CMSVM.Speakers);
                 }
 
                 _unitofWork.Save();
@@ -61,6 +66,8 @@ namespace CMS.Areas.Admin.Controllers
             }
             else
             {
+                CMSVM.ConferenceList = _unitofWork.Conference.GetDropDownListForConference();
+
                 return View(CMSVM);
             }
         }
@@ -69,23 +76,23 @@ namespace CMS.Areas.Admin.Controllers
 
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitofWork.Attendees.GetAll() });
+            return Json(new { data = _unitofWork.Speakers.GetAll(includeProperties: "Conference") });
         }
 
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var aFromDb = _unitofWork.Attendees.Get(id);
+            var sFromDb = _unitofWork.Speakers.Get(id);
 
-            if(aFromDb == null)
+            if(sFromDb == null)
             {
-                return Json(new { success = false, message = "Error Deleting Attendee!" });
+                return Json(new { success = false, message = "Error Deleting Speaker!" });
             }
 
-            _unitofWork.Attendees.Remove(aFromDb);
+            _unitofWork.Speakers.Remove(sFromDb);
             _unitofWork.Save();
 
-            return Json(new { success = true, message = "Attendee Deleted Successfully!" });
+            return Json(new { success = true, message = "Speaker Deleted Successfully!" });
         }
 
         #endregion

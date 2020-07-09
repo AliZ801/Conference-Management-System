@@ -4,14 +4,16 @@ using CMS.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200709124745_AddSpeakersToDb")]
+    partial class AddSpeakersToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,40 +77,6 @@ namespace CMS.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Conference");
-                });
-
-            modelBuilder.Entity("CMS.Models.Sessions", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ConferenceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ETime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("STime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("TrackId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ConferenceId");
-
-                    b.HasIndex("TrackId");
-
-                    b.ToTable("Sessions");
                 });
 
             modelBuilder.Entity("CMS.Models.Speakers", b =>
@@ -391,19 +359,6 @@ namespace CMS.DataAccess.Migrations
                         .HasForeignKey("ConferenceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("CMS.Models.Sessions", b =>
-                {
-                    b.HasOne("CMS.Models.Conference", "Conference")
-                        .WithMany()
-                        .HasForeignKey("ConferenceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CMS.Models.Tracks", "Tracks")
-                        .WithMany()
-                        .HasForeignKey("TrackId");
                 });
 
             modelBuilder.Entity("CMS.Models.Speakers", b =>

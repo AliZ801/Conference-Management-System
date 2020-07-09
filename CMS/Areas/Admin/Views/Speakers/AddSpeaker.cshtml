@@ -1,0 +1,59 @@
+﻿@model CMS.Models.ViewModel.CMSViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var title = "Add New Speaker";
+
+    if(Model.Speakers.Id != 0)
+    {
+        ViewData["Title"] = "Update Speaker";
+    }
+    else
+    {
+        ViewData["Title"] = "Add New Speaker";
+    }
+}
+
+<div class="container">
+    <div class="col-6 m-0 m-auto border rounded">
+        <form method="post" asp-action="AddSpeaker" class="col-12">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if(Model.Speakers.Id != 0)
+            {
+                <input type="hidden" asp-for="@Model.Speakers.Id" />
+                title = "Update Speaker";
+            }
+
+            <div class="row justify-content-center">
+                <h3>@title</h3>
+            </div>
+            <hr class="w-75" />
+
+            <div class="row form-group">
+                <label asp-for="@Model.Speakers.Name"></label>
+                <input asp-for="@Model.Speakers.Name" class="form-control" />
+                <span asp-validation-for="@Model.Speakers.Name" class="text-danger"></span>
+            </div>
+
+            <div class="row form-group">
+                <label>Conference Name</label>
+                @Html.DropDownListFor(i => i.Speakers.ConferenceId, Model.ConferenceList, "Select Conference", new { @class="form-control"})
+            </div>
+
+            <div class="row form-group">
+
+                @if(Model.Speakers.Id != 0)
+                {
+                    <partial name="_EditAndBackBtn" model="@Model.Speakers.Id" />
+                }
+                else
+                {
+                    <partial name="_CreateAndBackBtn" />
+                }
+
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -23,5 +23,9 @@ namespace CMS.DataAccess.Data
         public DbSet<ConfAttendees> ConferenceAttendees { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
+        public DbSet<Speakers> Speakers { get; set; }
+
+        public DbSet<Sessions> Sessions { get; set; }
     }
 }

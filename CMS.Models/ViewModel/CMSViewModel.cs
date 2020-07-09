@@ -15,11 +15,15 @@ namespace CMS.Models.ViewModel
 
         public ConfAttendees ConfAttendees { get; set; }
 
+        public Speakers Speakers { get; set; }
+
         //DropDownLists
         public IEnumerable<SelectListItem> ConferenceList { get; set; }
 
         public IEnumerable<SelectListItem> TracksList { get; set; }
 
         public IEnumerable<SelectListItem> AttendeesList { get; set; }
+
+        public IEnumerable<SelectListItem> SpeakersList { get; set; }
     }
 }
