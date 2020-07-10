@@ -2,10 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container border rounded">
-    <div class="row justify-content-between pt-3">
-        <div class="col-12">
-            <h3 class="text-center">Conference Management System</h3>
+<div class="container cus-border rounded">
+    <div class="col-10 m-0 m-auto">
+        <div class="row justify-content-center p-1">
+            <h3 class="pt-2">Conference Management System</h3>
+        </div>
+        <hr />
+        <div>
             <p>
                 Conference Management System is an ASP.Net Core MVC based application. It is implemented on N-Tier Architecture with Repository Pattern.
                 API calls are made through AJAX and JSON. As for designing Bootstrap 4 is used along with HTML5, CSS3 and third party tools like
@@ -16,10 +19,22 @@
             </p>
             <ul>
                 <li>Admin have all rights to all the features the appliation provides.</li>
-                <li>Manager can have access to CRUD functionality availbale by the application.</li>
+                <li>Manager can only access lists of records if available in models.</li>
                 <li>Employees only have access to list of records.</li>
             </ul>
-            <p class="text-danger">Please login to use the application.</p>
+            <h5 class="text-danger text-center">Please login to use the application.</h5>
         </div>
     </div>
 </div>
+
+@section Scripts{ 
+<style>
+    .cus-border {
+        border: 2px solid #004481;
+    }
+
+    hr{
+        border-color: black;
+    }
+</style>
+}

@@ -6,7 +6,7 @@
 }
 
 <div class="container">
-    <div class="col-5 m-0 m-auto border rounded">
+    <div class="col-5 m-0 m-auto cus-border bg-light rounded">
         <form id="account" method="post" class="col-12">
             <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -54,4 +54,21 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+<style>
+    .cus-border {
+        border: 2px solid #004481;
+    }
+
+    hr {
+        border-color: black;
+    }
+
+    input[type=email] {
+        border-color: #0094ff;
+    }
+
+    input[type=password] {
+        border-color: #0094ff;
+    }
+</style>
 }

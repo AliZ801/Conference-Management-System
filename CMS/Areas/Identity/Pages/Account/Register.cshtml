@@ -5,121 +5,146 @@
     ViewData["Title"] = "Register";
 }
 
-    <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="border rounded">
-        <div asp-validation-summary="All" class="text-danger"></div>
+<form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="cus-border bg-light rounded">
+    <div asp-validation-summary="All" class="text-danger"></div>
 
-        <div class="row justify-content-center">
-            <h3>Register New Employee</h3>
-        </div>
-        <hr class="w-75" />
+    <div class="row justify-content-center">
+        <h3>Register New Employee</h3>
+    </div>
+    <hr class="w-75" />
 
-        <div class="row form-group justify-content-between p-1">
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.FName"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.FName" class="form-control" placeholder="Enter First Name" />
-                    <span asp-validation-for="Input.FName" class="text-danger"></span>
-                </div>
+    <div class="row form-group justify-content-between p-1">
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.FName"></label>
             </div>
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.LName"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.LName" class="form-control" placeholder="Enter Last Name" />
-                    <span asp-validation-for="Input.LName" class="text-danger"></span>
-                </div>
+            <div class="col-8">
+                <input asp-for="Input.FName" class="form-control" placeholder="Enter First Name" />
+                <span asp-validation-for="Input.FName" class="text-danger"></span>
             </div>
         </div>
-
-        <div class="row form-group justify-content-between p-1">
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.Gender"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.Gender" class="form-control" placeholder="Male/Female" />
-                    <span asp-validation-for="Input.Gender" class="text-danger"></span>
-                </div>
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.LName"></label>
             </div>
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.VerfId"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.VerfId" class="form-control" placeholder="Enter Verification ID" />
-                    <span asp-validation-for="Input.VerfId" class="text-danger"></span>
-                </div>
+            <div class="col-8">
+                <input asp-for="Input.LName" class="form-control" placeholder="Enter Last Name" />
+                <span asp-validation-for="Input.LName" class="text-danger"></span>
             </div>
         </div>
+    </div>
 
-        <div class="row form-group justify-content-between p-1">
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.Email"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.Email" class="form-control" placeholder="Enter Email" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
+    <div class="row form-group justify-content-between p-1">
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.Gender"></label>
             </div>
-            <div class="row col-6">
-                <div class="col-4">
-                    <label>Role</label>
-                </div>
-                <div class="col-8">
-                    <input type="radio" name="rdUserRole" value="@SD.Admin" /> &nbsp; @SD.Admin
-                    &nbsp;
-                    <input type="radio" name="rdUserRole" value="@SD.Manager" /> &nbsp; @SD.Manager
-                    &nbsp;
-                    <input type="radio" name="rdUserRole" value="@SD.Employee" checked /> &nbsp; @SD.Employee
-                </div>
+            <div class="col-8">
+                <input asp-for="Input.Gender" class="form-control" placeholder="Male/Female" />
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
             </div>
         </div>
-
-        <div class="row form-group justify-content-between p-1">
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.Password"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.Password" class="form-control" placeholder="Enter Password" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.VerfId"></label>
             </div>
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.ConfirmPassword"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Re-Enter Password" />
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                </div>
+            <div class="col-8">
+                <input asp-for="Input.VerfId" class="form-control" placeholder="Enter Verification ID" />
+                <span asp-validation-for="Input.VerfId" class="text-danger"></span>
             </div>
         </div>
+    </div>
 
-        <div class="row form-group justify-content-between p-1">
-            <div class="row col-6">
-                <div class="col-4">
-                    <label asp-for="Input.PhoneNumber"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Enter Mobile No." />
-                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-                </div>
+    <div class="row form-group justify-content-between p-1">
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.Email"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Input.Email" class="form-control" placeholder="Enter Email" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
         </div>
-
-        <div class="row justify-content-center pb-2">
-            <div class="col-3">
-                <button type="submit" class="btn btn-primary form-control">Register</button>
+        <div class="row col-6">
+            <div class="col-4">
+                <label>Role</label>
+            </div>
+            <div class="col-8">
+                <input type="radio" name="rdUserRole" value="@SD.Admin" /> &nbsp; @SD.Admin
+                &nbsp;
+                <input type="radio" name="rdUserRole" value="@SD.Manager" /> &nbsp; @SD.Manager
+                &nbsp;
+                <input type="radio" name="rdUserRole" value="@SD.Employee" checked /> &nbsp; @SD.Employee
             </div>
         </div>
+    </div>
 
-    </form>
+    <div class="row form-group justify-content-between p-1">
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.Password"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Input.Password" class="form-control" placeholder="Enter Password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.ConfirmPassword"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Re-Enter Password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-group justify-content-between p-1">
+        <div class="row col-6">
+            <div class="col-4">
+                <label asp-for="Input.PhoneNumber"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Enter Mobile No." />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center pb-2">
+        <div class="col-3">
+            <button type="submit" class="btn btn-primary form-control">Register</button>
+        </div>
+    </div>
+
+</form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <style>
+        .cus-border {
+            border: 2px solid #004481;
+        }
+
+        hr {
+            border-color: black;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input[type=text] {
+            border-color: #0094ff;
+        }
+
+        input[type=email] {
+            border-color: #0094ff;
+        }
+
+        input[type=password] {
+            border-color: #0094ff;
+        }
+    </style>
 }

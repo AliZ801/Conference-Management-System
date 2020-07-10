@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="border rounded">
+<div class="border bg-light rounded">
     <div class="row p-1">
         <div class="col-6">
             <h3 class="pl-2">User's List</h3>
@@ -81,6 +81,14 @@
 
         td{
             border: 1px solid black;
+        }
+
+        tr:nth-of-type(even) {
+            background-color: #004481;
+            border: 1px solid black;
+            font-weight: 400;
+            color: white;
+            font-size: large;
         }
     </style>
 }
