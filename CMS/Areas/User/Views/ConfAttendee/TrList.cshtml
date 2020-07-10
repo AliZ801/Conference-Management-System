@@ -4,10 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
+<div class="container cus-border rounded bg-light">
     <div class="row pt-2 justify-content-center">
         <h3>Tracks List</h3>
     </div>
+    <hr class="w-75" />
     <br />
     <table id="tblData" class="table table-striped table-bordered" style="width:100%">
         <thead>
@@ -22,31 +23,40 @@
 
 @section Scripts{
     <script>
-    jQuery.noConflict()(function ($) {
-        $(document).ready(function () {
-            loadDataTable();
+        jQuery.noConflict()(function ($) {
+            $(document).ready(function () {
+                loadDataTable();
+            })
         })
-    })
 
-    var dataTable;
+        var dataTable;
 
-    function loadDataTable() {
-        dataTable = $('#tblData').DataTable({
-            "ajax": {
-                "url": "/User/ConfAttendee/GetAllTr",
-                "type": "GET",
-                "datatype": "json"
-            },
-            "columns": [
-                { "data": "id", "width": "15%" },
-                { "data": "name", "width": "40%"},
-                { "data": "conference.name", "width": "45%" }
-            ],
-            "language": {
-                "emptyTable": "No Record Found!"
-            },
-            "width": "100%"
-        })
-    }
+        function loadDataTable() {
+            dataTable = $('#tblData').DataTable({
+                "ajax": {
+                    "url": "/User/ConfAttendee/GetAllTr",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "id", "width": "15%" },
+                    { "data": "name", "width": "40%" },
+                    { "data": "conference.name", "width": "45%" }
+                ],
+                "language": {
+                    "emptyTable": "No Record Found!"
+                },
+                "width": "100%"
+            })
+        }
     </script>
+    <style>
+        .cus-border {
+            border: 2px solid #004481;
+        }
+
+        hr {
+            border-color: black;
+        }
+    </style>
 }
