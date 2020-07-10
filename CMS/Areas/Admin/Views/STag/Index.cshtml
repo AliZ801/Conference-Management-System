@@ -3,19 +3,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="border">
+<div class="rounded" style="border:2px solid #004481">
     <div class="row p-1">
         <div class="col-6">
-            <h3>Session Tag's List</h3>
+            <h3 class="pl-2">Session Tag's List</h3>
         </div>
         <div class="col-6 text-right">
             <a asp-action="AddSTag" class="btn btn-primary text-white">
                 <i class="fas fa-plus"></i> &nbsp; New Session Tag
             </a>
         </div>
+        <hr class="w-75" style="border-color:black" />
     </div>
     <br />
-    <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+    <table id="tblData" class="table table-striped table-bordered pl-1 pr-1" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>

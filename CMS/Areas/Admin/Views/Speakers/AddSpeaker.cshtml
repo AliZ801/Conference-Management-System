@@ -4,7 +4,7 @@
 
     var title = "Add New Speaker";
 
-    if(Model.Speakers.Id != 0)
+    if (Model.Speakers.Id != 0)
     {
         ViewData["Title"] = "Update Speaker";
     }
@@ -15,18 +15,18 @@
 }
 
 <div class="container">
-    <div class="col-6 m-0 m-auto border rounded">
+    <div class="col-6 m-0 m-auto cus-border">
         <form method="post" asp-action="AddSpeaker" class="col-12">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @if(Model.Speakers.Id != 0)
+            @if (Model.Speakers.Id != 0)
             {
                 <input type="hidden" asp-for="@Model.Speakers.Id" />
                 title = "Update Speaker";
             }
 
             <div class="row justify-content-center">
-                <h3>@title</h3>
+                <h3 class="pt-2">@title</h3>
             </div>
             <hr class="w-75" />
 
@@ -38,12 +38,12 @@
 
             <div class="row form-group">
                 <label>Conference Name</label>
-                @Html.DropDownListFor(i => i.Speakers.ConferenceId, Model.ConferenceList, "Select Conference", new { @class="form-control"})
+                @Html.DropDownListFor(i => i.Speakers.ConferenceId, Model.ConferenceList, "Select Conference", new { @class = "form-control", @style = "border-color:#0094ff" })
             </div>
 
-            <div class="row form-group">
+            <div class="row form-group pb-2">
 
-                @if(Model.Speakers.Id != 0)
+                @if (Model.Speakers.Id != 0)
                 {
                     <partial name="_EditAndBackBtn" model="@Model.Speakers.Id" />
                 }
@@ -57,3 +57,27 @@
         </form>
     </div>
 </div>
+
+@section Scripts{
+    <style>
+        .cus-border {
+            border: 2px solid #004481;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 50px;
+        }
+
+        label {
+            font-weight: 400;
+        }
+
+        input[type=text] {
+            border-color: #0094ff;
+        }
+
+        hr {
+            border-color: black;
+        }
+    </style>
+}

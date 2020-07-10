@@ -4,7 +4,7 @@
 
     var title = "Add New Session Speaker";
 
-    if(Model.SSpeaker.Id != 0)
+    if (Model.SSpeaker.Id != 0)
     {
         ViewData["Title"] = "Update Session Speaker";
     }
@@ -15,7 +15,7 @@
 }
 
 <div class="container">
-    <div class="col-6 m-0 m-auto border rounded">
+    <div class="col-6 m-0 m-auto cus-border">
         <form method="post" asp-action="AddSSpeaker" class="col-12">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -26,23 +26,23 @@
             }
 
             <div class="row justify-content-center">
-                <h3>@title</h3>
+                <h3 class="pt-2">@title</h3>
             </div>
             <hr class="w-75" />
 
             <div class="row form-group">
                 <label>Session Title</label>
-                @Html.DropDownListFor(i => i.SSpeaker.SessionId, Model.SessionsList, "Select Session Title", new { @class = "form-control" })
+                @Html.DropDownListFor(i => i.SSpeaker.SessionId, Model.SessionsList, "Select Session Title", new { @class = "form-control", @style = "border-color:#0094ff" })
             </div>
 
             <div class="row form-group">
                 <label>Speaker Name</label>
-                @Html.DropDownListFor(i => i.SSpeaker.SpeakerId, Model.SpeakersList, "Select Speaker Name", new { @class = "form-control" })
+                @Html.DropDownListFor(i => i.SSpeaker.SpeakerId, Model.SpeakersList, "Select Speaker Name", new { @class = "form-control", @style = "border-color:#0094ff" })
             </div>
 
-            <div class="row form-group">
+            <div class="row form-group pb-2">
 
-                @if(Model.SSpeaker.Id != 0)
+                @if (Model.SSpeaker.Id != 0)
                 {
                     <partial name="_EditAndBackBtn" model="@Model.SSpeaker.Id" />
                 }
@@ -56,3 +56,23 @@
         </form>
     </div>
 </div>
+
+@section Scripts{
+    <style>
+        .cus-border {
+            border: 2px solid #004481;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 50px;
+        }
+
+        label {
+            font-weight: 400;
+        }
+
+        hr {
+            border-color: black;
+        }
+    </style>
+}
